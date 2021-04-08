@@ -42,14 +42,14 @@ public class ManejaDatosEst {
         }
         return res;
     }
-    
-    public List <Object []> consultaDatos(String sql){
+
+    public List<Object[]> consultaDatos(String sql) {
         //Regresa los registros de los estudiantes
-        List <Object []> datos = new ArrayList<Object []>();
-        try{
+        List<Object[]> datos = new ArrayList<Object[]>();
+        try {
             Statement ps = (Statement) con.createStatement();
             ResultSet rs = (ResultSet) ps.executeQuery(sql);
-            while(rs.next()){
+            while (rs.next()) {
                 Object dat[] = new Object[NUM_CAMPOS_ESTUDIANTE];
                 //Estructura del registro Estudiante
                 dat[0] = rs.getInt(1);
@@ -61,10 +61,40 @@ public class ManejaDatosEst {
                 dat[6] = rs.getInt(7);
                 datos.add(dat);
             }
-        }catch(Exception e){
-            System.err.println("Error al listar "+e);
+        } catch (Exception e) {
+            System.err.println("Error al listar " + e);
         }
         return datos;
+    }
+
+    public List<String> carreras(String sql) {
+        List<String> datos = new ArrayList<String>();
+        try {
+            Statement ps = (Statement) con.createStatement();
+            ResultSet rs = (ResultSet) ps.executeQuery(sql);
+            while (rs.next()) {
+                String dat = "";
+                dat = rs.getString(2);
+                datos.add((String) dat);
+            }
+        } catch (Exception e) {
+            System.err.println("Error al listar " + e);
+        }
+        return datos;
+    }
+    
+    public int maxNumControl(){
+        int num=0;
+        try {
+            Statement ps = (Statement) con.createStatement();
+            ResultSet rs = (ResultSet) ps.executeQuery("SELECT MAX(numcontrol) FROM ADMINISTRADOR.ESTUDIANTE");
+            while (rs.next()) {
+                num = rs.getInt(1);
+            }
+        } catch (Exception e) {
+            System.err.println("Error al traer numero de control " + e);
+        }
+        return num;
     }
 
 }
