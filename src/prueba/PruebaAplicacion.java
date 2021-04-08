@@ -20,13 +20,16 @@ public class PruebaAplicacion {
         Interfaz in2 = new Interfaz(model);
         Interfaz in3 = new Interfaz(model);
         Interfaz in4 = new Interfaz(model);
+        Interfaz in5 = new Interfaz(model);
         Thread h1 = new Thread(in1);
         Thread h2 = new Thread(in2);
         Thread h3 = new Thread(in3);
-        Thread h4 = new Thread(in4);
+        Thread h4 = new Thread(in4); 
+        Thread h5 = new Thread(in5);
         h1.start();
         h2.start();
         h3.start();
         h4.start();
+        h5.start();
     }
 }

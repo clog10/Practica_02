@@ -41,6 +41,7 @@ public class Conexion {
         if(conexion == null){
             conexion = new Conexion(url, usuario, password);
         }
+        System.out.println("Aplicacion conectada, "+numConexiones+" aplicaciones conectadas");
         return conexion;
     }
     
@@ -53,9 +54,12 @@ public class Conexion {
             if(coneccion!=null)
                 if(numConexiones==1){
                     coneccion.close();
+                    System.out.println("Las aplicaciones fueron desconectadas");
+                    System.out.println("Conexión finalizada");
                     return true;
                 }else{
                     numConexiones--;
+                    System.out.println("Aplicación desconectada, "+numConexiones+" aplicaciones conectadas");
                 }
             return false;
         }catch(SQLException e){
