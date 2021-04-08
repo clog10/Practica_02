@@ -89,11 +89,11 @@ public class Interfaz extends JFrame implements ActionListener, Runnable {
         principal.add(superior, BorderLayout.NORTH);
         controlLabel = new JLabel("Numero de Control:");
         panel.add(controlLabel);
-        numeroLabel = new JLabel(""+numeroControl());
+        numeroLabel = new JLabel("" + numeroControl());
         panel.add(numeroLabel);
         nombreLabel = new JLabel("Nombre");
         panel.add(nombreLabel);
-        nombre = new JTextField(15);
+        nombre = new JTextField(20);
         panel.add(nombre);
         sexoLabel = new JLabel("Sexo:");
         panel.add(sexoLabel);
@@ -163,9 +163,9 @@ public class Interfaz extends JFrame implements ActionListener, Runnable {
 
         limpiarCampos();
     }
-    
-    public int numeroControl(){
-        int numero = baseDatos.maxNumControl()+1;
+
+    public int numeroControl() {
+        int numero = baseDatos.maxNumControl() + 1;
         return numero;
     }
 
@@ -180,10 +180,8 @@ public class Interfaz extends JFrame implements ActionListener, Runnable {
             jRadioButton2.setSelected(false);
         }
         carreras.setSelectedIndex(0);
-        numeroLabel.setText(""+numeroControl());
+        numeroLabel.setText("" + numeroControl());
     }
-    
-    //SELECT MAX(numcontrol) FROM ADMINISTRADOR.ESTUDIANTE 
 
     private void terminarActionPerformed(java.awt.event.ActionEvent evt) {
         if (baseDatos.cerrarSesion()) {
@@ -220,15 +218,6 @@ public class Interfaz extends JFrame implements ActionListener, Runnable {
         this.setVisible(true);
         this.setSize(700, 600);
         this.setResizable(false);
-    }
-
-    public static void main(String[] args) {
-        ModeloTabla model = new ModeloTabla();
-        Interfaz in = new Interfaz(model);
-        Thread h1 = new Thread(in);
-        Thread h2 = new Thread(in);
-        h1.start();
-        h2.start();
     }
 
 }

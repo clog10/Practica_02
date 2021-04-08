@@ -27,6 +27,7 @@ public class Conexion {
             Class.forName("org.apache.derby.jdbc.ClientDriver");
             try {
                 coneccion = (Connection) DriverManager.getConnection(url, usuario, password);
+                System.out.println("Conexion establecida");
             } catch (SQLException ex) {
                 Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -53,8 +54,9 @@ public class Conexion {
                 if(numConexiones==1){
                     coneccion.close();
                     return true;
-                }else
+                }else{
                     numConexiones--;
+                }
             return false;
         }catch(SQLException e){
             System.err.println("Error al tratar de cerrar la conexión "+e);
