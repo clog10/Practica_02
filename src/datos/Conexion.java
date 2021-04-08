@@ -22,7 +22,7 @@ public class Conexion {
     // el tercer atributo créalo pues es lo que caracteriza al patrón Singleton
     private static Conexion conexion;
 
-    public Conexion(String url, String usuario, String password) {
+    private Conexion(String url, String usuario, String password) {
         try {
             Class.forName("org.apache.derby.jdbc.ClientDriver");
             try {
